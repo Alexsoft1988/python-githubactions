@@ -1,0 +1,73 @@
+name: Python CI CD
+on:
+    push:
+        branches: ["main"]
+        paths: ".github/workflows/python_continous_integration.yaml"
+
+defaults:
+    run:
+        working-directory: python
+
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - name: code checkout
+              uses: actions/checkout@v4
+            - name: pyton setup
+              uses: actions/setup-python@v4
+              with:
+                python-version: "3.12"
+                cache: pip
+            - name: dependent libraries setup
+              run: pip install -r requirements.txt
+            - name: apply linting
+              run: flake8 app tests --max-line-length=100
+    
+    tests:
+      runs-on: ubuntu-latest
+      needs: lint
+      steps:
+        - name: code checkout
+          uses: actions/checkout@v4
+        - name: python setup
+          uses: actions/setup-python@v4
+          with: 
+            python-version: "3.12"
+            cache: pip
+        - name: install libraries
+          run: pip install -r requirements.txt
+        - name: run test cases
+          run: pytest --cov=app --cov-report=xml --cov-fail-under=80
+        - run: |
+            pwd
+            ls -al
+            echo ${{github.workspace}}
+
+        - name: upload artifact
+          if: always()
+          uses: actions/upload-artifact@v4
+          with: 
+            name: "coverage-3.12"
+            path: ${{github.workspace}}/python/coverage.xml
+    
+    docker:
+      runs-on: ubuntu-latest
+      needs: tests
+      steps:
+        - name: code checkout
+          uses: actions/checkout@v4
+        - name: docker login
+          uses: docker/login-action@v3
+          with:
+            username: ${{vars.DOCKER_USERNAME}}
+            password: ${{secrets.DOCKER_TOKEN}}
+        - name: build and push
+          uses: docker/build-push-action@v6
+          with:
+            context: ./python
+            push: true
+            tags: |  # happielearning/gh-actions-practical-series:latest , happielearning/gh-actions-practical-series@sha-value
+              ${{vars.DOCKER_USERNAME}}/gh-actions-practical-series:latest
+              ${{vars.DOCKER_USERNAME}}/gh-actions-practical-series:${{github.sha}}
+              
