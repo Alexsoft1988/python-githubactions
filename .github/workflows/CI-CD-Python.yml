@@ -36,7 +36,7 @@ jobs:
               run: |
                 pytest
             - name: Compilar con PyInstaller
-              run: pyinstaller --onefile source.main.py
+              run: pyinstaller --onefile source/main.py
             - name: Subir ejecutable como artefacto
               uses: actions/upload-artifact@v7
               with:
