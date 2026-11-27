@@ -1,4 +1,4 @@
-
+# source/main.py
 from producto import Producto
 
 p1= Producto(1,"producto 1", 50)
@@ -9,3 +9,9 @@ print(p2)
 print(p3)
 
 print (p3.calcular_total(5))
+
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
