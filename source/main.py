@@ -10,8 +10,8 @@ print(p3)
 
 print (p3.calcular_total(5))
 
-def add(a, b):
+def sumar(a, b):
     return a + b
 
-def subtract(a, b):
+def restar(a, b):
     return a - b
