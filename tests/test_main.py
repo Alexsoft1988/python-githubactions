@@ -1,5 +1,5 @@
 import pytest
-from source.producto import sumar, restar
+from source.main import sumar, restar
 
 
 def test_sumar():
