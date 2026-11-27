@@ -41,7 +41,7 @@ jobs:
               uses: actions/upload-artifact@v7
               with:
                 name: ejecutable-linux
-                path: source/main
+                path: source/main.py
                 if-no-files-found: error
                 retention-days: 1
 
