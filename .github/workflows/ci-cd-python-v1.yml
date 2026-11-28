@@ -24,6 +24,7 @@ jobs:
     with:
       image-name: python-app
       dockerfile-path: "."
+      servidor-runner: 'ubuntu-latest'
     secrets:
       REGISTRY_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
       REGISTRY_NAME: ${{ secrets.DOCKERHUB_NAME }}
