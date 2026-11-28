@@ -1,0 +1,19 @@
+name: Integración continua con flujo de trabajo de Python reutilizable
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch: 
+  
+jobs:
+  ci:
+    uses: Alexsoft1988/python-reusable-template/.github/workflows/ci-python-template.yml@main
+    with:
+      python-version: '3.12'
+      coverage: false
+      archivo-requerimiento: 'requirements.txt'
+      archivo-compilado: 'source/main.py'
