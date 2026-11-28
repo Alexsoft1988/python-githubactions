@@ -1,4 +1,4 @@
-name: Integración continua con flujo de trabajo de Python reutilizable
+name: CI-CD-Pythonreutilizable
 
 on:
   push:
