@@ -22,7 +22,7 @@ jobs:
     uses: Alexsoft1988/python-reusable-template/.github/workflows/docker-Reusable.yml@main
     with:
       image-name: python-app
-      dockerfile-path: ./Dockerfile
+      dockerfile-path: "."
     secrets:
       REGISTRY_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
       REGISTRY_NAME: ${{ secrets.DOCKERHUB_NAME }}
