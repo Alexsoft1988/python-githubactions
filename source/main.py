@@ -1,4 +1,10 @@
 # source/main.py
+import sys
+from pathlib import Path
+
+# Agrega la carpeta padre (la raíz) a las rutas de búsqueda de Python
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
 from producto import Producto
 
 p1= Producto(1,"producto 1", 50)
