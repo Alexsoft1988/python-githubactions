@@ -18,6 +18,7 @@ jobs:
       archivo-requerimiento: 'requirements.txt'
       archivo-compilado: 'source/main.py'
   build:
+    needs: ci
     uses: Alexsoft1988/python-reusable-template/.github/workflows/docker-Reusable.yml@main
     with:
       image-name: python-app
