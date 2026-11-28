@@ -17,14 +17,14 @@ jobs:
       coverage: false
       archivo-requerimiento: 'requirements.txt'
       archivo-compilado: 'source/main.py'
-      servidor-runner: 'ubuntu-latest'
+      servidor-runner: 'self-hosted'
   build:
     needs: ci
     uses: Alexsoft1988/python-reusable-template/.github/workflows/docker-Reusable.yml@main
     with:
       image-name: python-app
       dockerfile-path: "."
-      servidor-runner: 'ubuntu-latest'
+      servidor-runner: 'self-hosted'
     secrets:
       REGISTRY_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
       REGISTRY_NAME: ${{ secrets.DOCKERHUB_NAME }}
