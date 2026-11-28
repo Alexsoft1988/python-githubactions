@@ -17,6 +17,7 @@ jobs:
       coverage: false
       archivo-requerimiento: 'requirements.txt'
       archivo-compilado: 'source/main.py'
+      servidor-runner: 'ubuntu-latest'
   build:
     needs: ci
     uses: Alexsoft1988/python-reusable-template/.github/workflows/docker-Reusable.yml@main
