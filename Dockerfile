@@ -4,7 +4,7 @@ USER root
 
 
 WORKDIR /app
-COPY source/ /app/source/
+COPY source/ /source/
 COPY ./requirements.txt /app
 RUN ls -la /app
 
@@ -17,4 +17,4 @@ RUN pip3 list --format=columns
 USER 1001
 
 
-ENTRYPOINT ["python3", "/app/source/main.py"]
+ENTRYPOINT ["python3", "/source/main.py"]
